@@ -1,0 +1,99 @@
+/* CampusRide.css */
+.ride-page { padding-bottom: 60px; }
+.ride-body { padding-top: 32px; }
+
+.sos-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(255, 101, 132, 0.08);
+  border: 1px solid rgba(255, 101, 132, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.sos-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.sos-info span:first-child { font-size: 1.2rem; }
+.sos-info strong { color: var(--text-primary); }
+
+.sos-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--secondary);
+  background: white;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+}
+
+.sos-btn:hover, .sos-btn.sos-active {
+  background: var(--secondary);
+  color: white;
+  animation: sosPulse 0.6s ease infinite alternate;
+}
+
+@keyframes sosPulse {
+  from { box-shadow: 0 0 0 0 rgba(255, 101, 132, 0.4); }
+  to   { box-shadow: 0 0 0 12px rgba(255, 101, 132, 0); }
+}
+
+.ride-controls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.ride-controls .filter-pills { margin-bottom: 0; flex: 1; }
+
+.ride-right-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.pool-toggle { cursor: pointer; }
+.pool-toggle input { display: none; }
+
+.pool-toggle-pill {
+  padding: 9px 14px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: inline-block;
+}
+
+.pool-toggle input:checked + .pool-toggle-pill {
+  background: rgba(108, 99, 255, 0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.results-count { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 20px; }
+
+@media (max-width: 768px) {
+  .ride-controls { flex-direction: column; }
+  .sos-banner { flex-direction: column; align-items: flex-start; }
+}

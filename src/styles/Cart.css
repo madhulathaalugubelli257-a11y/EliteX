@@ -1,0 +1,99 @@
+/* Cart.css */
+.cart-page { padding-bottom: 60px; }
+.cart-body { padding-top: 32px; display: flex; flex-direction: column; gap: 40px; }
+
+.cart-section {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--card-border);
+  color: var(--text-primary);
+}
+
+.cart-items-list { display: flex; flex-direction: column; }
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--card-border);
+  transition: background var(--transition);
+}
+
+.cart-item:last-child { border-bottom: none; }
+.cart-item:hover { background: var(--bg-secondary); }
+
+.cart-item-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.cart-item-info { flex: 1; }
+.cart-item-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
+.cart-item-restaurant { font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-bottom: 4px; }
+.cart-item-price { font-size: 0.82rem; color: var(--text-muted); }
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cart-item-subtotal { font-size: 1rem; font-weight: 800; color: var(--text-primary); min-width: 52px; text-align: right; }
+
+.cart-remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+  color: var(--text-muted);
+}
+
+.cart-remove-btn:hover { background: rgba(255, 101, 132, 0.1); }
+
+.cart-summary {
+  padding: 20px 24px;
+  border-top: 2px solid var(--card-border);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.cart-summary-row.total {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  padding-top: 10px;
+  border-top: 1px solid var(--card-border);
+}
+
+.cart-summary .btn { margin-top: 8px; }
+
+@media (max-width: 600px) {
+  .cart-item { flex-wrap: wrap; }
+  .cart-item-controls { width: 100%; justify-content: flex-end; }
+}

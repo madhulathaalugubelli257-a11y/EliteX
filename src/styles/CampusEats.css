@@ -1,0 +1,159 @@
+/* CampusEats.css */
+.eats-page { padding-bottom: 60px; }
+
+.eats-body { padding-top: 32px; }
+
+.delivery-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(67, 217, 173, 0.1);
+  border: 1px solid rgba(67, 217, 173, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 12px 18px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.delivery-badge {
+  margin-left: auto;
+  background: var(--accent);
+  color: white;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.eats-controls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+/* Horizontal scrollable pills */
+.filter-pills-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 8px; /* space for scrollbar or focus */
+  flex: 1;
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.filter-pills-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-pills-scroll .pill {
+  flex-shrink: 0;
+}
+
+.eats-right-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Veg toggle */
+.veg-toggle { cursor: pointer; }
+.veg-toggle input { display: none; }
+
+.veg-toggle-pill {
+  padding: 9px 14px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: inline-block;
+}
+
+.veg-toggle input:checked + .veg-toggle-pill {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.results-count {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* Special Sections Layout */
+.eats-sections-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.eats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 10px;
+  margin-left: -20px;
+  padding-left: 20px;
+  margin-right: -20px;
+  padding-right: 20px;
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-item {
+  flex-shrink: 0;
+  width: 280px;
+}
+
+@media (max-width: 768px) {
+  .eats-controls { flex-direction: column; }
+  .eats-right-controls { flex-wrap: wrap; width: 100%; }
+  .filter-pills-scroll { width: 100%; }
+  
+  .horizontal-scroll-container {
+    margin-left: -16px;
+    padding-left: 16px;
+    margin-right: -16px;
+    padding-right: 16px;
+  }
+  .scroll-item {
+    width: 240px;
+  }
+}

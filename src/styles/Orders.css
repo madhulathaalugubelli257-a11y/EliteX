@@ -1,0 +1,91 @@
+/* Orders.css */
+.orders-page { padding-bottom: 60px; }
+.orders-body { padding-top: 32px; }
+
+.orders-list { display: flex; flex-direction: column; gap: 20px; }
+
+.order-card { padding: 0; overflow: hidden; }
+
+.order-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.order-type-icon {
+  font-size: 1.8rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.order-header-info { flex: 1; }
+.order-id   { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+.order-date { font-size: 0.78rem; color: var(--text-muted); }
+
+.order-header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.order-total { font-size: 1.1rem; font-weight: 900; color: var(--text-primary); }
+
+.order-items-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 24px;
+}
+
+.order-item-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  padding: 6px 12px 6px 6px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.order-chip-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.order-more {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.order-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-top: 1px solid var(--card-border);
+  background: var(--bg-secondary);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.order-type-badge { display: flex; align-items: center; gap: 10px; }
+.order-item-count { font-size: 0.82rem; color: var(--text-muted); }
+.order-actions { display: flex; gap: 10px; }
+
+@media (max-width: 600px) {
+  .order-card-header { flex-wrap: wrap; }
+  .order-header-right { align-items: flex-start; }
+}

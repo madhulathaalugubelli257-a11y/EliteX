@@ -1,0 +1,1022 @@
+/* RideFlow.css — Multi-step ride booking UI styles */
+
+/* ── Step Progress Bar ── */
+.ride-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.step-circle.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.2);
+}
+
+.step-circle.done {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.step-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.step-label.active {
+  color: var(--primary);
+}
+
+.step-label.done {
+  color: var(--accent);
+}
+
+.step-connector {
+  width: 40px;
+  height: 2px;
+  background: var(--card-border);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+.step-connector.done {
+  background: var(--accent);
+}
+
+/* ── Shared layout ── */
+.ride-flow-page {
+  padding-bottom: 60px;
+}
+
+.ride-flow-body {
+  padding-top: 28px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── Mock Map (LocationPicker) ── */
+.mock-map {
+  position: relative;
+  height: 180px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 40%, #c8dce8 100%);
+}
+
+[data-theme="dark"] .mock-map {
+  background: linear-gradient(135deg, #1a2530 0%, #1e2d3a 40%, #16232e 100%);
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(108, 99, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Fake road lines */
+.mock-map::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%);
+}
+
+.mock-map::after {
+  content: '';
+  position: absolute;
+  left: 40%;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.map-label {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .map-label {
+  background: rgba(28, 27, 46, 0.85);
+}
+
+.map-pin {
+  position: absolute;
+  font-size: 1.4rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: all 0.4s ease;
+  animation: pinDrop 0.4s ease;
+}
+
+.map-pin-from {
+  top: 30%;
+  left: 30%;
+  transform: translate(-50%, -100%);
+}
+
+.map-pin-to {
+  bottom: 30%;
+  right: 30%;
+  transform: translate(50%, 0);
+}
+
+@keyframes pinDrop {
+  from {
+    transform: translate(-50%, -200%) scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -100%) scale(1);
+    opacity: 1;
+  }
+}
+
+.map-route-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ── Location Inputs ── */
+.location-inputs-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+}
+
+.location-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: background var(--transition);
+  position: relative;
+}
+
+.location-input-row:hover {
+  background: var(--bg-secondary);
+}
+
+.location-input-row+.location-input-row {
+  border-top: 1px solid var(--card-border);
+}
+
+.loc-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.loc-dot-from {
+  background: var(--primary);
+}
+
+.loc-dot-to {
+  background: var(--secondary);
+}
+
+.loc-connector {
+  position: absolute;
+  left: 23px;
+  top: calc(50% + 6px);
+  width: 2px;
+  height: calc(50% - 6px);
+  background: var(--card-border);
+  pointer-events: none;
+}
+
+.loc-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.loc-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.loc-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loc-placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.loc-clear {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.loc-clear:hover {
+  background: var(--secondary);
+  color: white;
+}
+
+/* Swap button */
+.swap-btn {
+  position: absolute;
+  right: 52px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.swap-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Dropdown */
+.loc-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  margin-top: 4px;
+  overflow: hidden;
+  animation: dropDown 0.18s ease;
+}
+
+@keyframes dropDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loc-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-bottom: 1px solid var(--card-border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.loc-options {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.loc-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  transition: background var(--transition);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.loc-option:last-child {
+  border-bottom: none;
+}
+
+.loc-option:hover {
+  background: var(--bg-secondary);
+}
+
+.loc-option-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.loc-opt-name {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.loc-opt-area {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.loc-opt-empty {
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Quick chips */
+.quick-locations {
+  margin-top: 20px;
+}
+
+.quick-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: 'Inter', sans-serif;
+}
+
+.quick-chip:hover {
+  background: rgba(108, 99, 255, 0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ── Searching animation ── */
+.searching-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 20px;
+}
+
+.searching-pulse {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(108, 99, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  animation: pulse 1.2s ease infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.35);
+  }
+
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 20px rgba(108, 99, 255, 0);
+  }
+}
+
+.searching-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.searching-sub {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ── Vehicle Selector ── */
+.route-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.route-from-to {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex-wrap: wrap;
+}
+
+.route-arrow {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.route-dist {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(108, 99, 255, 0.1);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.vehicle-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.vehicle-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.vehicle-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.vehicle-card.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+.vehicle-main-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.vehicle-big-icon {
+  font-size: 2.2rem;
+  width: 52px;
+  height: 52px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vehicle-info {
+  flex: 1;
+}
+
+.vehicle-info h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.vehicle-info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.vehicle-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.vehicle-fare {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  display: block;
+}
+
+.vehicle-eta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.vehicle-select-indicator {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--card-border);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: transparent;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.vehicle-card.selected .vehicle-select-indicator {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* Sharing options (appear below selected card) */
+.sharing-options-row {
+  display: flex;
+  gap: 10px;
+  padding: 12px 18px 14px;
+  border-top: 1px solid var(--card-border);
+  background: var(--bg-secondary);
+}
+
+.sharing-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.sharing-btn:hover {
+  border-color: var(--primary);
+}
+
+.sharing-btn.sharing-active {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.sharing-btn-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sharing-btn.sharing-active .sharing-btn-label {
+  color: white;
+}
+
+.sharing-btn-fare {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.sharing-btn.sharing-active .sharing-btn-fare {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.sharing-save-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  background: var(--accent);
+  color: white;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+}
+
+.sharing-btn.sharing-active .sharing-save-badge {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Ride Summary ── */
+.ride-summary-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+}
+
+.summary-section-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  padding: 14px 20px 0;
+}
+
+.summary-route {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summary-route-point {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sr-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sr-dot-from {
+  background: var(--primary);
+}
+
+.sr-dot-to {
+  background: var(--secondary);
+}
+
+.sr-line {
+  width: 2px;
+  height: 20px;
+  background: var(--card-border);
+  margin-left: 4px;
+}
+
+.sr-tag {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sr-location {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.summary-vehicle-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--card-border);
+}
+
+.sv-icon {
+  font-size: 1.8rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sv-info {
+  flex: 1;
+}
+
+.sv-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+}
+
+.sv-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.sv-fare {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+/* Fare breakdown */
+.fare-breakdown {
+  padding: 14px 20px;
+  border-top: 1px solid var(--card-border);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fare-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.fare-row.total {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  padding-top: 8px;
+  border-top: 1px solid var(--card-border);
+}
+
+/* Assigned driver */
+.driver-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.driver-big-avi {
+  font-size: 2rem;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.driver-details {
+  flex: 1;
+}
+
+.driver-nm {
+  font-size: 1rem;
+  font-weight: 700;
+  display: block;
+  color: var(--text-primary);
+}
+
+.driver-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.driver-plate {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 4px;
+  display: block;
+}
+
+/* Flow footer buttons */
+.flow-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.flow-footer .btn {
+  flex: 1;
+}
+
+/* ── Booking Success ── */
+.booking-success-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 60px;
+  text-align: center;
+  gap: 20px;
+}
+
+.success-anim {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #2bb08a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 32px rgba(67, 217, 173, 0.4);
+}
+
+@keyframes successPop {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.success-sub {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.success-detail-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.sdc-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sdc-id {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.sdc-status {
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.sdc-rows {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sdc-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.sdc-row span:first-child {
+  color: var(--text-muted);
+}
+
+.sdc-row span:last-child {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.success-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .ride-steps {
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .step-label {
+    display: none;
+  }
+
+  .step-connector {
+    width: 24px;
+  }
+
+  .sharing-options-row {
+    flex-direction: column;
+  }
+}

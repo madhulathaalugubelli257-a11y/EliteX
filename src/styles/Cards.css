@@ -1,0 +1,350 @@
+/* Cards.css — Shared card styles for FoodCard, RideCard, GroceryCard */
+
+/* ====== FOOD CARD ====== */
+.food-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.food-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 190px;
+  display: block;
+}
+
+.food-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.food-card:hover .food-card-img { transform: scale(1.06); }
+
+.food-badge {
+  position: absolute;
+  top: 10px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.food-badge.bestseller { left: 10px; background: #FFB400; color: white; }
+.food-badge.discount { right: 10px; background: var(--secondary); color: white; }
+
+.veg-dot {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 2px solid;
+}
+
+.veg-dot.veg { border-color: #22c55e; background: #22c55e; }
+.veg-dot.nonveg { border-color: #ef4444; background: #ef4444; }
+
+.food-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.food-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-restaurant {
+  font-size: 0.78rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.food-prep {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.food-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.food-name:hover, .food-card a:hover .food-name { color: var(--primary); }
+
+.food-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+}
+
+.rating-num { font-weight: 700; color: var(--text-primary); }
+.review-count { color: var(--text-muted); }
+
+.food-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.food-price-wrap { display: flex; align-items: baseline; gap: 6px; }
+.food-price { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); }
+.food-original-price { font-size: 0.85rem; color: var(--text-muted); text-decoration: line-through; }
+
+/* ====== RIDE CARD ====== */
+.ride-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ride-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ride-driver {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ride-avatar {
+  font-size: 2rem;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ride-driver-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+  display: block;
+}
+
+.ride-driver-stats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.ride-fare { text-align: right; }
+.ride-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+.ride-price-label { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Route visualization */
+.ride-route {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.route-point {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.route-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.from-dot { background: var(--primary); }
+.to-dot   { background: var(--secondary); }
+
+.route-line {
+  width: 2px;
+  height: 16px;
+  background: var(--card-border);
+  margin-left: 4px;
+}
+
+.route-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.route-location {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+}
+
+.ride-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ride-meta-item {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.ride-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ride-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+/* ====== GROCERY CARD ====== */
+.grocery-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.grocery-card.out-of-stock { opacity: 0.7; }
+
+.grocery-img-wrap {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.grocery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.grocery-card:hover .grocery-img { transform: scale(1.06); }
+
+.grocery-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--secondary);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.oos-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.grocery-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.grocery-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.grocery-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.grocery-unit {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.grocery-pool {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  margin-top: 4px;
+}
+
+.grocery-saving {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.grocery-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.grocery-price-wrap { display: flex; align-items: baseline; gap: 6px; }
+.grocery-price { font-size: 1.1rem; font-weight: 800; color: var(--text-primary); }
+.grocery-mrp { font-size: 0.82rem; color: var(--text-muted); text-decoration: line-through; }
+
+/* ====== SKELETON CARD ====== */
+.skeleton-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+.skeleton-img { height: 190px; }
+.skeleton-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.skeleton-line { height: 14px; border-radius: 4px; }
+.skeleton-line.short { width: 50%; }
+.skeleton-line.medium { width: 75%; }
+.skeleton-line.full { width: 100%; }

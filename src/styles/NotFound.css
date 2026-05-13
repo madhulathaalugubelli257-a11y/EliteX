@@ -1,0 +1,76 @@
+/* NotFound.css */
+.notfound-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.notfound-content {
+  text-align: center;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.notfound-number {
+  font-size: clamp(6rem, 20vw, 10rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.notfound-emoji { font-size: 3.5rem; }
+
+.notfound-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.notfound-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.notfound-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.notfound-links p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 12px; }
+
+.notfound-quick-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.notfound-quick-links a {
+  padding: 8px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.notfound-quick-links a:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
