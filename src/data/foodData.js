@@ -1389,16 +1389,16 @@ export const foodItems = [
     "id": 143
   },
   {
-    "name": "Garlic Naan - Large",
+    "name": "Garlic Naan",
     "category": "North Indian",
     "subCategory": "Breads",
     "type": "veg",
-    "price": 236,
+    "price": 40,
     "rating": 3.9,
     "deliveryTime": "44 mins",
     "restaurant": "Wrap House",
     "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80",
-    "description": "Delicious and authentic garlic naan - large prepared fresh.",
+    "description": "Delicious and authentic garlic naan prepared fresh.",
     "isPopular": true,
     "isRecommended": false,
     "id": 151
