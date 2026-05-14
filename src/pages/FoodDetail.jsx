@@ -24,7 +24,7 @@ export default function FoodDetail() {
   useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => {
-      const found = foodItems.find((f) => f.id === id);
+      const found = foodItems.find((f) => f.id === Number(id));
       setItem(found || null);
       setLoading(false);
     }, 600);
@@ -79,19 +79,20 @@ export default function FoodDetail() {
             {/* Info */}
             <div className="food-detail-info">
               <div className="food-detail-meta">
-                <span className={`veg-label ${item.isVeg ? 'veg' : 'nonveg'}`}>
-                  {item.isVeg ? '🟢 Veg' : '🔴 Non-Veg'}
+                <span className={`veg-label ${item.type === 'veg' ? 'veg' : 'nonveg'}`}>
+                  {item.type === 'veg' ? '🟢 Veg' : '🔴 Non-Veg'}
                 </span>
-                {item.tags.map((t) => <span key={t} className="tag">{t}</span>)}
+                <span className="tag">{item.category}</span>
+                {item.subCategory && <span className="tag">{item.subCategory}</span>}
               </div>
 
               <h1 className="food-detail-name">{item.name}</h1>
-              <p className="food-detail-restaurant">by {item.restaurantName}</p>
+              <p className="food-detail-restaurant">by {item.restaurant}</p>
 
               <div className="food-detail-rating">
-                <span className="stars">{'★'.repeat(Math.floor(item.rating))}</span>
+                <span className="stars">{'★'.repeat(Math.floor(item.rating))}{'☆'.repeat(5 - Math.floor(item.rating))}</span>
                 <span>{item.rating}</span>
-                <span className="text-muted">({item.reviews} reviews)</span>
+                <span className="text-muted">({item.isPopular ? '500+' : '100+'} reviews)</span>
               </div>
 
               <p className="food-detail-desc">{item.description}</p>
@@ -100,8 +101,8 @@ export default function FoodDetail() {
                 <div className="detail-stat">
                   <span>⏱️</span>
                   <div>
-                    <span className="detail-stat-label">Prep Time</span>
-                    <span className="detail-stat-val">{item.prepTime}</span>
+                    <span className="detail-stat-label">Delivery Time</span>
+                    <span className="detail-stat-val">{item.deliveryTime}</span>
                   </div>
                 </div>
                 <div className="detail-stat">
@@ -115,7 +116,7 @@ export default function FoodDetail() {
                   <span>🏪</span>
                   <div>
                     <span className="detail-stat-label">Restaurant</span>
-                    <span className="detail-stat-val">{item.restaurantName}</span>
+                    <span className="detail-stat-val">{item.restaurant}</span>
                   </div>
                 </div>
               </div>
