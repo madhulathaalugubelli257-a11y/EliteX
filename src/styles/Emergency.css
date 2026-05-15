@@ -1,0 +1,359 @@
+/* Emergency.css — Premium, urgent styling for SOS feature */
+
+/* ── Modal Overlay & Container ── */
+.emergency-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.emergency-modal {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid rgba(255, 50, 50, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 0, 0, 0.2);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #fff;
+  padding: 24px;
+  position: relative;
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.emergency-modal::-webkit-scrollbar {
+  width: 6px;
+}
+.emergency-modal::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* ── Header ── */
+.emergency-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.emergency-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff4757;
+}
+
+.emergency-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.emergency-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* ── SOS Trigger Button (CampusRide override) ── */
+.sos-trigger-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 71, 87, 0.6);
+  animation: redPulse 2s infinite;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.sos-trigger-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ── Form Inputs ── */
+.emergency-form-group {
+  margin-bottom: 20px;
+}
+
+.emergency-form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.emergency-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.emergency-input:focus {
+  outline: none;
+  border-color: #ff4757;
+}
+
+.emergency-btn-primary {
+  width: 100%;
+  background: #ff4757;
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.emergency-btn-primary:hover {
+  background: #ff6b81;
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+}
+
+/* ── Hospital Cards ── */
+.hospital-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hospital-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hospital-card:hover {
+  background: rgba(255, 71, 87, 0.1);
+  border-color: rgba(255, 71, 87, 0.4);
+  transform: translateY(-2px);
+}
+
+.hosp-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+}
+
+.hosp-meta {
+  font-size: 0.85rem;
+  color: #aaa;
+  display: flex;
+  gap: 12px;
+}
+
+.hosp-eta {
+  font-weight: 700;
+  color: #2ed573;
+  background: rgba(46, 213, 115, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* ── Searching Animation ── */
+.emergency-searching {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.radar-pulse {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 71, 87, 0.2);
+  border-radius: 50%;
+  margin: 0 auto 24px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  position: relative;
+}
+
+.radar-pulse::after {
+  content: '';
+  position: absolute;
+  top: -20px; left: -20px; right: -20px; bottom: -20px;
+  border: 2px solid #ff4757;
+  border-radius: 50%;
+  animation: radarPing 1.5s infinite ease-out;
+}
+
+/* ── Driver Details & Tracking ── */
+.driver-details-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.driver-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.driver-avatar {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #ccc;
+  object-fit: cover;
+  border: 2px solid #ff4757;
+}
+
+.driver-info h3 { margin: 0 0 4px 0; font-size: 1.2rem; }
+.driver-info p { margin: 0; color: #aaa; font-size: 0.9rem; }
+
+.ambulance-plate {
+  display: inline-block;
+  background: #f1c40f;
+  color: #000;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-contact {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.btn-call { background: #2ed573; color: #fff; }
+.btn-call:hover { background: #26b963; }
+
+.btn-msg { background: rgba(255,255,255,0.1); color: #fff; }
+.btn-msg:hover { background: rgba(255,255,255,0.2); }
+
+/* ── Status Timeline ── */
+.status-timeline {
+  margin-top: 32px;
+  position: relative;
+}
+
+.status-timeline::before {
+  content: '';
+  position: absolute;
+  top: 10px; bottom: 10px; left: 14px;
+  width: 2px;
+  background: rgba(255,255,255,0.1);
+  z-index: 0;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.timeline-step.active {
+  opacity: 1;
+}
+
+.step-indicator {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #333;
+  border: 2px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.timeline-step.active .step-indicator {
+  background: #ff4757;
+  border-color: #ff4757;
+  box-shadow: 0 0 10px rgba(255,71,87,0.5);
+}
+
+.step-content h4 { margin: 0; font-size: 1rem; }
+.step-content p { margin: 4px 0 0 0; font-size: 0.8rem; color: #aaa; }
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes redPulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 71, 87, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+}
+
+@keyframes radarPing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}

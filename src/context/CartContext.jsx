@@ -64,6 +64,7 @@ export function CartProvider({ children }) {
   const [groceryCart, setGroceryCart] = useState([]);
   const [orders, setOrders] = useState([]);
   const [rideBookings, setRideBookings] = useState([]); // per-user ride history
+  const [sosBookings, setSosBookings] = useState([]); // per-user SOS history
 
   // ---- Load the correct user's data whenever userId changes ----
   // This covers: initial page load, login, logout, and account switching.
@@ -74,6 +75,7 @@ export function CartProvider({ children }) {
       setGroceryCart(loadFromStorage(buildKey(userId, 'grocery_cart')));
       setOrders(loadFromStorage(buildKey(userId, 'orders')));
       setRideBookings(loadFromStorage(buildKey(userId, 'ride_bookings')));
+      setSosBookings(loadFromStorage(buildKey(userId, 'sos_bookings')));
     } else {
       // User logged out — wipe in-memory state ONLY.
       // Other users' localStorage entries are untouched.
@@ -81,6 +83,7 @@ export function CartProvider({ children }) {
       setGroceryCart([]);
       setOrders([]);
       setRideBookings([]);
+      setSosBookings([]);
     }
   }, [userId]); // Re-runs every time the logged-in user changes
 
@@ -170,6 +173,16 @@ export function CartProvider({ children }) {
     });
   };
 
+  // ---- SOS Bookings ----
+
+  const addSosBooking = (booking) => {
+    setSosBookings((prev) => {
+      const updated = [booking, ...prev];
+      saveToStorage(buildKey(userId, 'sos_bookings'), updated);
+      return updated;
+    });
+  };
+
   // ---- Orders ----
 
   const placeOrder = (type, cartItems, total) => {
@@ -219,6 +232,10 @@ export function CartProvider({ children }) {
         // Ride bookings
         rideBookings,
         addRideBooking,
+
+        // SOS bookings
+        sosBookings,
+        addSosBooking,
 
         // Orders & totals
         totalCartItems,

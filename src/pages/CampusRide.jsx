@@ -12,6 +12,8 @@ import { Link }                from 'react-router-dom';
 import LocationPicker   from '../components/LocationPicker';
 import RideTypeSelector from '../components/RideTypeSelector';
 import RideSummary      from '../components/RideSummary';
+import EmergencyModal   from '../components/EmergencyModal';
+import SOSButton        from '../components/SOSButton';
 
 import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -148,7 +150,7 @@ export default function CampusRide() {
   const [booking, setBooking] = useState(null);
 
   // ---- SOS ----
-  const [sosActive, setSosActive] = useState(false);
+  const [isEmergencyOpen, setIsEmergencyOpen] = useState(false);
 
   // ── Handlers ──────────────────────────────────────────────────────────────
 
@@ -235,16 +237,7 @@ export default function CampusRide() {
                 <span> All drivers are student-verified. Emergency?</span>
               </div>
             </div>
-            <button
-              id="sos-button"
-              className={`sos-btn ${sosActive ? 'sos-active' : ''}`}
-              onClick={() => {
-                setSosActive(true);
-                setTimeout(() => setSosActive(false), 3000);
-              }}
-            >
-              🆘 {sosActive ? 'SOS Sent!' : 'SOS'}
-            </button>
+            <SOSButton onClick={() => setIsEmergencyOpen(true)} />
           </div>
         )}
 
@@ -292,6 +285,11 @@ export default function CampusRide() {
           <SuccessScreen booking={booking} onBookAgain={handleBookAgain} />
         )}
       </div>
+
+      <EmergencyModal 
+        isOpen={isEmergencyOpen} 
+        onClose={() => setIsEmergencyOpen(false)} 
+      />
     </div>
   );
 }
