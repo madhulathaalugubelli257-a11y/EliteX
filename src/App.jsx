@@ -1,4 +1,5 @@
 // App.jsx — Root component with all context providers and router
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
@@ -9,6 +10,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Chatbot from './components/chatbot/Chatbot';
 import ProtectedRoute from './components/ProtectedRoute';
+import SplashScreen from './components/SplashScreen';
 
 // Pages
 import Home from './pages/Home';
@@ -28,6 +30,13 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  // Conditionally render the splash screen first
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
+
   return (
     // ThemeProvider → AuthProvider → CartProvider → Router
     <ThemeProvider>
