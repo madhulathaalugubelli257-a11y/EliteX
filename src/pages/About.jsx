@@ -2,10 +2,12 @@
 import '../styles/About.css';
 
 const team = [
-  { name: 'Aarav Sharma', role: 'Founder & CEO', avatar: '🧑‍💻', college: 'RNS IT, Bangalore' },
-  { name: 'Priya Patel', role: 'Product Lead', avatar: '👩‍🎓', college: 'DSI College, Bangalore' },
-  { name: 'Rohan Mehta', role: 'Tech Lead', avatar: '🧑‍🔬', college: 'RVCE, Bangalore' },
-  { name: 'Anjali Nair', role: 'Design Lead', avatar: '👩‍💻', college: 'BMS College, Bangalore' },
+  { name: 'Yeshashwini', avatar: '👩‍🎓', college: 'Aurora University' },
+  { name: 'Madhulatha', avatar: '👩‍🎓', college: 'Aurora University' },
+  { name: 'Angel', avatar: '👩‍🎓', college: 'Aurora University' },
+  { name: 'Snigdha', avatar: '👩‍🎓', college: 'Aurora University' },
+  { name: 'Akshitha', avatar: '👩‍🎓', college: 'Aurora University' },
+  { name: 'Krishna', avatar: '👨‍🎓', college: 'Aurora University' },
 ];
 
 const values = [

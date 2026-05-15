@@ -12,7 +12,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             <div className="footer-logo">
-              <span className="footer-logo-icon">🚀</span>
+              <span className="footer-logo-icon">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHTo9U4w2XPgkpypJ0IpfI-_6ETZJK3LWQkA&s" alt="EliteX Logo" className="footer-logo-img" />
+              </span>
               <span className="footer-logo-text">Elite<span>X</span></span>
             </div>
             <p className="footer-tagline">
@@ -54,9 +56,9 @@ export default function Footer() {
           <div className="footer-col">
             <h4 className="footer-heading">Contact</h4>
             <div className="footer-contact">
-              <p>📍 RNS Institute of Technology, Bangalore</p>
-              <p>📧 hello@elitex.app</p>
-              <p>📞 +91 98765 43210</p>
+              <p>📍 Aurora Deemed to Be University, Bhongir</p>
+              <p>📧 info@aurora.ac.in</p>
+              <p>📞 +91 86390 77779</p>
               <div className="footer-delivery-note">
                 <span>🏍️</span>
                 <span>Flat <strong>₹15</strong> delivery on all food orders!</span>

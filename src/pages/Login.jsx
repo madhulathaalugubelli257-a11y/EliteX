@@ -46,7 +46,9 @@ export default function Login() {
     <div className="auth-page">
       <div className="auth-left">
         <div className="auth-brand">
-          <span className="auth-logo-icon">🚀</span>
+          <span className="auth-logo-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHTo9U4w2XPgkpypJ0IpfI-_6ETZJK3LWQkA&s" alt="EliteX Logo" className="auth-logo-img" />
+          </span>
           <span className="auth-logo-text">EliteX</span>
         </div>
         <h2 className="auth-left-title">Your campus,<br />Your way.</h2>

@@ -6,13 +6,12 @@ import { useLanguage } from '../context/LanguageContext';
 import '../styles/Auth.css';
 
 const colleges = [
-  'RNS Institute of Technology',
-  'Dayananda Sagar College of Engineering',
-  'RVCE',
-  'BMS College of Engineering',
-  'PESIT',
-  'New Horizon College',
-  'East West College',
+  'Aurora Deemed to be University, Bhongir',
+  'Anurag University,Hyderabad',
+  'JNTU,Hyderabad',
+  'GITAM University,Hyderabad',
+  'IIIT Hyderabad',
+  'VNR Vignana Jyothi Institute of Technology',
   'Other',
 ];
 
@@ -64,7 +63,9 @@ export default function Register() {
     <div className="auth-page">
       <div className="auth-left">
         <div className="auth-brand">
-          <span className="auth-logo-icon">🚀</span>
+          <span className="auth-logo-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHTo9U4w2XPgkpypJ0IpfI-_6ETZJK3LWQkA&s" alt="EliteX Logo" className="auth-logo-img" />
+          </span>
           <span className="auth-logo-text">EliteX</span>
         </div>
         <h2 className="auth-left-title">Join the campus revolution.</h2>

@@ -49,7 +49,9 @@ export default function Navbar() {
         <div className="nav-inner">
           {/* Logo */}
           <Link to="/" className="nav-logo" onClick={closeMenu}>
-            <div className="nav-logo-icon">🚀</div>
+            <div className="nav-logo-icon">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHTo9U4w2XPgkpypJ0IpfI-_6ETZJK3LWQkA&s" alt="EliteX Logo" className="nav-logo-img" />
+            </div>
             <span className="nav-logo-text">Elite<span>X</span></span>
           </Link>
 
